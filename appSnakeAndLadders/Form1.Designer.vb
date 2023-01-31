@@ -22,9 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label100 = New System.Windows.Forms.Label()
+        Me.btnDie1 = New System.Windows.Forms.Button()
         Me.lblCounter91 = New System.Windows.Forms.Label()
         Me.lblCounter92 = New System.Windows.Forms.Label()
         Me.lblCounter93 = New System.Windows.Forms.Label()
@@ -68,7 +66,6 @@ Partial Class Form1
         Me.lblCounter51 = New System.Windows.Forms.Label()
         Me.lblCounter52 = New System.Windows.Forms.Label()
         Me.lblCounter53 = New System.Windows.Forms.Label()
-        Me.lblCounter54 = New System.Windows.Forms.Label()
         Me.lblCounter55 = New System.Windows.Forms.Label()
         Me.lblCounter56 = New System.Windows.Forms.Label()
         Me.lblCounter57 = New System.Windows.Forms.Label()
@@ -125,36 +122,26 @@ Partial Class Form1
         Me.lblCounter3 = New System.Windows.Forms.Label()
         Me.lblCounter2 = New System.Windows.Forms.Label()
         Me.lblCounter1 = New System.Windows.Forms.Label()
+        Me.lblCounter54 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.picDie1 = New System.Windows.Forms.PictureBox()
+        Me.picDie2 = New System.Windows.Forms.PictureBox()
+        Me.btnDie2 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picDie1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picDie2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'PictureBox1
+        'btnDie1
         '
-        Me.PictureBox1.Image = Global.appSnakeAndLadders.My.Resources.Resources.game_board
-        Me.PictureBox1.Location = New System.Drawing.Point(15, 15)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(800, 800)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(880, 66)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 101
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label100
-        '
-        Me.Label100.AutoSize = True
-        Me.Label100.Location = New System.Drawing.Point(892, 50)
-        Me.Label100.Name = "Label100"
-        Me.Label100.Size = New System.Drawing.Size(44, 13)
-        Me.Label100.TabIndex = 102
-        Me.Label100.Text = "Roll Die"
+        Me.btnDie1.Location = New System.Drawing.Point(890, 168)
+        Me.btnDie1.Name = "btnDie1"
+        Me.btnDie1.Size = New System.Drawing.Size(75, 23)
+        Me.btnDie1.TabIndex = 101
+        Me.btnDie1.Text = "Roll Die"
+        Me.btnDie1.UseVisualStyleBackColor = True
         '
         'lblCounter91
         '
@@ -499,14 +486,6 @@ Partial Class Form1
         Me.lblCounter53.Size = New System.Drawing.Size(30, 30)
         Me.lblCounter53.TabIndex = 160
         Me.lblCounter53.Visible = False
-        '
-        'lblCounter54
-        '
-        Me.lblCounter54.Location = New System.Drawing.Point(518, 364)
-        Me.lblCounter54.Name = "lblCounter54"
-        Me.lblCounter54.Size = New System.Drawing.Size(30, 30)
-        Me.lblCounter54.TabIndex = 159
-        Me.lblCounter54.Visible = False
         '
         'lblCounter55
         '
@@ -956,11 +935,80 @@ Partial Class Form1
         Me.lblCounter1.TabIndex = 103
         Me.lblCounter1.Visible = False
         '
+        'lblCounter54
+        '
+        Me.lblCounter54.Image = Global.appSnakeAndLadders.My.Resources.Resources.die6
+        Me.lblCounter54.Location = New System.Drawing.Point(518, 364)
+        Me.lblCounter54.Name = "lblCounter54"
+        Me.lblCounter54.Size = New System.Drawing.Size(30, 30)
+        Me.lblCounter54.TabIndex = 159
+        Me.lblCounter54.Visible = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.appSnakeAndLadders.My.Resources.Resources.game_board
+        Me.PictureBox1.Location = New System.Drawing.Point(15, 15)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(800, 800)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'picDie1
+        '
+        Me.picDie1.Location = New System.Drawing.Point(877, 62)
+        Me.picDie1.Name = "picDie1"
+        Me.picDie1.Size = New System.Drawing.Size(100, 100)
+        Me.picDie1.TabIndex = 203
+        Me.picDie1.TabStop = False
+        '
+        'picDie2
+        '
+        Me.picDie2.Location = New System.Drawing.Point(877, 244)
+        Me.picDie2.Name = "picDie2"
+        Me.picDie2.Size = New System.Drawing.Size(100, 100)
+        Me.picDie2.TabIndex = 206
+        Me.picDie2.TabStop = False
+        '
+        'btnDie2
+        '
+        Me.btnDie2.Location = New System.Drawing.Point(890, 350)
+        Me.btnDie2.Name = "btnDie2"
+        Me.btnDie2.Size = New System.Drawing.Size(75, 23)
+        Me.btnDie2.TabIndex = 204
+        Me.btnDie2.Text = "Roll Die"
+        Me.btnDie2.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(885, 34)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(91, 25)
+        Me.Label1.TabIndex = 207
+        Me.Label1.Text = "Player 1"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(885, 216)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(91, 25)
+        Me.Label2.TabIndex = 208
+        Me.Label2.Text = "Player 2"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1043, 831)
+        Me.ClientSize = New System.Drawing.Size(1038, 831)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.picDie2)
+        Me.Controls.Add(Me.btnDie2)
+        Me.Controls.Add(Me.picDie1)
         Me.Controls.Add(Me.lblCounter91)
         Me.Controls.Add(Me.lblCounter92)
         Me.Controls.Add(Me.lblCounter93)
@@ -1061,20 +1109,20 @@ Partial Class Form1
         Me.Controls.Add(Me.lblCounter3)
         Me.Controls.Add(Me.lblCounter2)
         Me.Controls.Add(Me.lblCounter1)
-        Me.Controls.Add(Me.Label100)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnDie1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Name = "Form1"
         Me.Text = "Snakes and Ladders"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picDie1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picDie2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Label100 As Label
+    Friend WithEvents btnDie1 As Button
     Friend WithEvents lblCounter91 As Label
     Friend WithEvents lblCounter92 As Label
     Friend WithEvents lblCounter93 As Label
@@ -1175,4 +1223,9 @@ Partial Class Form1
     Friend WithEvents lblCounter3 As Label
     Friend WithEvents lblCounter2 As Label
     Friend WithEvents lblCounter1 As Label
+    Friend WithEvents picDie1 As PictureBox
+    Friend WithEvents picDie2 As PictureBox
+    Friend WithEvents btnDie2 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

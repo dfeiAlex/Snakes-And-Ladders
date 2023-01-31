@@ -123,5 +123,23 @@
   <ItemGroup>
     <None Include="Resources\game-board.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

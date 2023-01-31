@@ -22,6 +22,36 @@ appSnakeAndLadders
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:appSnakeAndLadders.My.Resources.Resources.die1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:appSnakeAndLadders.My.Resources.Resources.die2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:appSnakeAndLadders.My.Resources.Resources.die3">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:appSnakeAndLadders.My.Resources.Resources.die4">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:appSnakeAndLadders.My.Resources.Resources.die5">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:appSnakeAndLadders.My.Resources.Resources.die6">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:appSnakeAndLadders.My.Resources.Resources.game_board">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
