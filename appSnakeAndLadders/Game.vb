@@ -9,8 +9,6 @@
         My.Resources.die6
     }
 
-
-
     'Counters for player 1 and 2
     Dim intCount1 As Integer = 1
     Dim intCount2 As Integer = 1
@@ -23,5 +21,5 @@
         picBox.Image = dieFaces(dieNumber - 1)
     End Sub
 
-
+    'Public Sub movePlayer()
 End Class
