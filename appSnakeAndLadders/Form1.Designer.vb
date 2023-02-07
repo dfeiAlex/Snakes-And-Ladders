@@ -132,14 +132,9 @@ Partial Class Form1
         Me.lblPlayerTurn = New System.Windows.Forms.Label()
         Me.grpContainer = New System.Windows.Forms.GroupBox()
         Me.lblState = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblHeader = New System.Windows.Forms.Label()
         Me.pnlHistory = New System.Windows.Forms.Panel()
         Me.lblHistory = New System.Windows.Forms.Label()
-        Me.txtCounter = New System.Windows.Forms.TextBox()
-        Me.cboPlayer = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnSet = New System.Windows.Forms.Button()
         Me.lblCounter54 = New System.Windows.Forms.Label()
         Me.picPlayer1 = New System.Windows.Forms.PictureBox()
         Me.picPlayer2 = New System.Windows.Forms.PictureBox()
@@ -1528,13 +1523,8 @@ Partial Class Form1
         'grpContainer
         '
         Me.grpContainer.Controls.Add(Me.lblState)
-        Me.grpContainer.Controls.Add(Me.Label5)
+        Me.grpContainer.Controls.Add(Me.lblHeader)
         Me.grpContainer.Controls.Add(Me.pnlHistory)
-        Me.grpContainer.Controls.Add(Me.txtCounter)
-        Me.grpContainer.Controls.Add(Me.cboPlayer)
-        Me.grpContainer.Controls.Add(Me.Label3)
-        Me.grpContainer.Controls.Add(Me.Label4)
-        Me.grpContainer.Controls.Add(Me.btnSet)
         Me.grpContainer.Controls.Add(Me.grpDice)
         Me.grpContainer.Controls.Add(Me.lblPlayerTurn)
         Me.grpContainer.Location = New System.Drawing.Point(630, 12)
@@ -1553,15 +1543,15 @@ Partial Class Form1
         Me.lblState.Text = "Roll a 6 to start playing!"
         Me.lblState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label5
+        'lblHeader
         '
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(7, 308)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(278, 28)
-        Me.Label5.TabIndex = 220
-        Me.Label5.Text = "Roll History"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHeader.Location = New System.Drawing.Point(7, 308)
+        Me.lblHeader.Name = "lblHeader"
+        Me.lblHeader.Size = New System.Drawing.Size(278, 28)
+        Me.lblHeader.TabIndex = 220
+        Me.lblHeader.Text = "Turn History"
+        Me.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pnlHistory
         '
@@ -1570,7 +1560,7 @@ Partial Class Form1
         Me.pnlHistory.Controls.Add(Me.lblHistory)
         Me.pnlHistory.Location = New System.Drawing.Point(8, 339)
         Me.pnlHistory.Name = "pnlHistory"
-        Me.pnlHistory.Size = New System.Drawing.Size(276, 224)
+        Me.pnlHistory.Size = New System.Drawing.Size(276, 248)
         Me.pnlHistory.TabIndex = 219
         '
         'lblHistory
@@ -1583,52 +1573,6 @@ Partial Class Form1
         Me.lblHistory.Size = New System.Drawing.Size(245, 324)
         Me.lblHistory.TabIndex = 0
         Me.lblHistory.Text = resources.GetString("lblHistory.Text")
-        '
-        'txtCounter
-        '
-        Me.txtCounter.Location = New System.Drawing.Point(166, 571)
-        Me.txtCounter.Name = "txtCounter"
-        Me.txtCounter.Size = New System.Drawing.Size(62, 20)
-        Me.txtCounter.TabIndex = 218
-        Me.txtCounter.Text = "50"
-        Me.txtCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cboPlayer
-        '
-        Me.cboPlayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPlayer.FormattingEnabled = True
-        Me.cboPlayer.Items.AddRange(New Object() {"1", "2"})
-        Me.cboPlayer.Location = New System.Drawing.Point(57, 571)
-        Me.cboPlayer.Name = "cboPlayer"
-        Me.cboPlayer.Size = New System.Drawing.Size(50, 21)
-        Me.cboPlayer.TabIndex = 217
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(113, 574)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(47, 13)
-        Me.Label3.TabIndex = 216
-        Me.Label3.Text = "Counter:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 574)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 13)
-        Me.Label4.TabIndex = 215
-        Me.Label4.Text = "Player:"
-        '
-        'btnSet
-        '
-        Me.btnSet.Location = New System.Drawing.Point(234, 569)
-        Me.btnSet.Name = "btnSet"
-        Me.btnSet.Size = New System.Drawing.Size(50, 23)
-        Me.btnSet.TabIndex = 0
-        Me.btnSet.Text = "Set"
-        Me.btnSet.UseVisualStyleBackColor = True
         '
         'lblCounter54
         '
@@ -1795,7 +1739,6 @@ Partial Class Form1
         CType(Me.picDie1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picDie2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpContainer.ResumeLayout(False)
-        Me.grpContainer.PerformLayout()
         Me.pnlHistory.ResumeLayout(False)
         Me.pnlHistory.PerformLayout()
         CType(Me.picPlayer1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1917,13 +1860,8 @@ Partial Class Form1
     Friend WithEvents grpContainer As GroupBox
     Friend WithEvents picPlayer2 As PictureBox
     Friend WithEvents picPlayer1 As PictureBox
-    Friend WithEvents txtCounter As TextBox
-    Friend WithEvents cboPlayer As ComboBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents btnSet As Button
     Friend WithEvents pnlHistory As Panel
     Friend WithEvents lblHistory As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblHeader As Label
     Friend WithEvents lblState As Label
 End Class
