@@ -166,31 +166,6 @@
         f/60MlHniQUEAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="lblHistory.Text" xml:space="preserve">
-    <value>Player 1 has rolled a 6! They have now started playing!
-Player 1 moves to 4.
-Player 2 has rolled a 6! They have now started playing!
-Player 1 moves to 9.
-Player 1 landed on a ladder! They move to 14.
-Player 2 moves to 7.
-Player 1 moves to 18. 
-Player 1 landed on a snake! They move to 6.
-Player 2 moves to 13.
-Player 1 moves to 10.
-Player 2 moves to 16.
-Player 2 landed on a ladder! They move to 54.
-asdlkhasda
-xasddasfsa
-asd
-as
-zxcf
-asdfw
-gyerasdqw
-eq
-e
-qw
-</value>
-  </data>
   <data name="picPlayer1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -238,7 +213,7 @@ qw
         m10DywfODjoMXrjleuvyba/b1++svDMwFDJ0dzhyeOQu++7kvaR7L+9n3J9/sOkh+mHhI6lH5Y+VHtf9
         qPdj64jlyJlR19G+J0FPHoyxxp7/lP7Th/H8p+Sn5ROqE42TZpOnp9ynbj5b/Wz8eerz+emCn6V/rn6h
         ++K7Xxx/6ZtZNTP+kv9y4dfiV/Kvjrxe9rp71n/28ZvkN/NzhW/l3x59x3jX+z7s/cR85gfsh4qPeh+7
-        Pnl/eriQvLDwG/eE8/s6uL5TAAAACXBIWXMAAAsPAAALDwGS+QOlAAAUMElEQVR4Xu2d+XtU1RnHbxLI
+        Pnl/eriQvLDwG/eE8/s6uL5TAAAACXBIWXMAAAsOAAALDgFAvuFBAAAUMElEQVR4Xu2d+XtU1RnHbxLI
         QjZCQghJBAJCCEkIZNFAAA2bLAohSRM2AeteQB+Uaq1YFXFnUSxCWywuVbQPamuxrq0oLpWqWCtQ1PbR
         pyrDX/H2/Zw7Ry7hJpnEUG587g9fM8zcc877fr73rDPjOHVpqTIlI03qM9Jlema6zO6fIXOzMmX+gP7S
         qGrOzpIW1SLV4pwBskS1dOAAuVj/LsvNDuUj2MAIVjCDHQxhCVPYwhjWMIc9HuCFY82YoS/M0YvmqZq0
@@ -375,7 +350,7 @@ qw
         m10DywfODjoMXrjleuvyba/b1++svDMwFDJ0dzhyeOQu++7kvaR7L+9n3J9/sOkh+mHhI6lH5Y+VHtf9
         qPdj64jlyJlR19G+J0FPHoyxxp7/lP7Th/H8p+Sn5ROqE42TZpOnp9ynbj5b/Wz8eerz+emCn6V/rn6h
         ++K7Xxx/6ZtZNTP+kv9y4dfiV/Kvjrxe9rp71n/28ZvkN/NzhW/l3x59x3jX+z7s/cR85gfsh4qPeh+7
-        Pnl/eriQvLDwG/eE8/s6uL5TAAAACXBIWXMAAAsQAAALEAGtI711AAAUoUlEQVR4Xu2d+3tV5ZXHjzpi
+        Pnl/eriQvLDwG/eE8/s6uL5TAAAACXBIWXMAAAsPAAALDwGS+QOlAAAUoUlEQVR4Xu2d+3tV5ZXHjzpi
         Fbkpt4TcQxIgCSFcExLAcJFLEJCEBMJdhLYj6ONI6XSk1bbUohWm4ig6o8XWOth5wLkUR6faaRFtHx0V
         Z8ZKrdN59Bkt4a9Y8/2sfXY4CTsXILQbn/3D9zknZ+93vWt9v+9lrfeck5MamFVn12fPtkE5DTYod74N
         zl9sQwoabWjRchtavNKGjW22YSUtNqx0jd1Q1iasFdbZDePW243jNiSIANw4R85Vm3PnHIpLOIVbOIZr

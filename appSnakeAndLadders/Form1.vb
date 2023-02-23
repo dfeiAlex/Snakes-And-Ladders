@@ -18,12 +18,12 @@
     Dim strCurrentPlayer As String = "Player 1"
 
     'Keeps track of player scores
-    Public player1Score As Integer = 1
-    Public player2Score As Integer = 1
+    Dim player1Score As Integer = 1
+    Dim player2Score As Integer = 1
 
     'Keeps track of whether they have rolled a 6 (started playing)
-    Public player1Playing As Boolean = False
-    Public player2Playing As Boolean = False
+    Dim player1Playing As Boolean = False
+    Dim player2Playing As Boolean = False
 
     Dim intRollNumber As Integer
 
@@ -56,6 +56,46 @@
         End If
     End Sub
 
+    Private Function checkTile(playerScore As Integer) As String
+        Select Case playerScore
+            ' This checks if a tile is the bottom of a ladder
+            Case 2
+                playerScore = 38
+                Return "Ladder"
+            Case 9
+                playerScore = 14
+                Return "Ladder"
+            Case 15
+                playerScore = 82
+                Return "Ladder"
+            Case 16
+                player1Score = 54
+                Return "Ladder"
+            Case 50
+                playerScore = 91
+                Return "Ladder"
+            Case 74
+                playerScore = 87
+                Return "Ladder"
+           ' This checks if a tile is the head of a snake
+            Case 18
+                playerScore = 6
+                Return "Snake"
+            Case 29
+                playerScore = 7
+                Return "Snake"
+            Case 61
+                playerScore = 16
+                Return "Snake"
+            Case 72
+                playerScore = 47
+                Return "Snake"
+            Case 96
+                playerScore = 76
+                Return "Snake"
+        End Select
+    End Function
+
     Private Function calculateScore(intRollNumber As Integer) As String
         ' This is calculation of score for both players!
         If strCurrentPlayer = "Player 1" Then
@@ -69,43 +109,7 @@
                 Return "Continue"
             End If
 
-            Select Case player1Score
-                ' This is  calculation of score for ladders.
-                Case 2
-                    player1Score = 38
-                    Return "Ladder"
-                Case 9
-                    player1Score = 14
-                    Return "Ladder"
-                Case 15
-                    player1Score = 82
-                    Return "Ladder"
-                Case 16
-                    player1Score = 54
-                    Return "Ladder"
-                Case 50
-                    player1Score = 91
-                    Return "Ladder"
-                Case 74
-                    player1Score = 87
-                    Return "Ladder"
-              ' This is  calculation of score for snakes.
-                Case 18
-                    player1Score = 6
-                    Return "Snake"
-                Case 29
-                    player1Score = 7
-                    Return "Snake"
-                Case 61
-                    player1Score = 16
-                    Return "Snake"
-                Case 72
-                    player1Score = 47
-                    Return "Snake"
-                Case 96
-                    player1Score = 76
-                    Return "Snake"
-            End Select
+            Return checkTile(player1Score)
         ElseIf strCurrentPlayer = "Player 2" Then
             ' This is calculation of score for player 2
             If (player2Score + intRollNumber < 100) Then
@@ -117,43 +121,7 @@
                 Return "Continue"
             End If
 
-            Select Case player2Score
-                ' This is  calculation of score for ladders.
-                Case 2
-                    player2Score = 38
-                    Return "Ladder"
-                Case 9
-                    player2Score = 14
-                    Return "Ladder"
-                Case 15
-                    player2Score = 82
-                    Return "Ladder"
-                Case 16
-                    player1Score = 54
-                    Return "Ladder"
-                Case 50
-                    player2Score = 91
-                    Return "Ladder"
-                Case 74
-                    player2Score = 87
-                    Return "Ladder"
-             ' This is  calculation of score for snakes.
-                Case 18
-                    player2Score = 6
-                    Return "Snake"
-                Case 29
-                    player2Score = 7
-                    Return "Snake"
-                Case 61
-                    player2Score = 16
-                    Return "Snake"
-                Case 72
-                    player2Score = 47
-                    Return "Snake"
-                Case 96
-                    player2Score = 76
-                    Return "Snake"
-            End Select
+            Return checkTile(player1Score)
         End If
 
         Return "Playing"
@@ -189,6 +157,19 @@
         End Select
     End Sub
 
+    Private Sub restart()
+        player1Playing = False
+        player2Playing = False
+        player1Score = 1
+        player2Score = 1
+        lblHistory.Text = ""
+
+        movePlayer(picPlayer1, 1)
+        movePlayer(picPlayer2, 1)
+        setDiePic(1, picDie1)
+        setDiePic(1, picDie2)
+    End Sub
+
     'Main game logic here
     Private Sub takeTurn()
         intRollNumber = rollDie()
@@ -210,6 +191,11 @@
             outcome = calculateScore(intRollNumber)
             addHistory(outcome)
             movePlayer(picPlayer1, player1Score)
+
+            If outcome = "Win" Then
+                MessageBox.Show("Player 1 wins!")
+                restart()
+            End If
         ElseIf strCurrentPlayer = "Player 2" Then
             setDiePic(intRollNumber, picDie2)
 
@@ -226,6 +212,11 @@
             outcome = calculateScore(intRollNumber)
             addHistory(outcome)
             movePlayer(picPlayer2, player2Score)
+
+            If outcome = "Win" Then
+                MessageBox.Show("player 2 win!")
+                restart()
+            End If
         End If
     End Sub
 
@@ -244,9 +235,5 @@
     Private Sub btnDie2_Click(button As Object, e As EventArgs) Handles btnDie2.Click
         strCurrentPlayer = "Player 2"
         takeTurn()
-    End Sub
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblHistory.Text = ""
     End Sub
 End Class

@@ -1570,9 +1570,8 @@ Partial Class Form1
         Me.lblHistory.Location = New System.Drawing.Point(4, 9)
         Me.lblHistory.MaximumSize = New System.Drawing.Size(250, 0)
         Me.lblHistory.Name = "lblHistory"
-        Me.lblHistory.Size = New System.Drawing.Size(245, 324)
+        Me.lblHistory.Size = New System.Drawing.Size(0, 12)
         Me.lblHistory.TabIndex = 0
-        Me.lblHistory.Text = resources.GetString("lblHistory.Text")
         '
         'lblCounter54
         '
