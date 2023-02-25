@@ -17,19 +17,23 @@
     'Keeps track of who's turn it is
     Dim strCurrentPlayer As String = "Player 1"
 
-    'Keeps track of player scores
-    Dim player1Score As Integer = 1
-    Dim player2Score As Integer = 1
-
-    'Keeps track of whether they have rolled a 6 (started playing)
-    Dim player1Playing As Boolean = False
-    Dim player2Playing As Boolean = False
+    'Keeps track of player score and state
+    Dim playerStats = New Dictionary(Of String, Dictionary(Of String, Object)) From {
+        {"Player 1", New Dictionary(Of String, Object) From {
+            {"Playing", False},
+            {"Score", 1}
+        }},
+        {"Player 2", New Dictionary(Of String, Object) From {
+            {"Playing", False},
+            {"Score", 1}
+        }}
+    }
 
     Dim intRollNumber As Integer
 
     'Generate a number between 1 and 6
     Private Function rollDie() As Integer
-        Return random.Next(1, 7) 'Return a number from 1 to 6
+        Return random.next(1, 7) 'return a number from 1 to 6
     End Function
 
     'Toggles roll buttons and changes the text in lblPlayerTurn and lblState
@@ -37,191 +41,155 @@
         btnDie1.Enabled = Not btnDie1.Enabled
         btnDie2.Enabled = Not btnDie2.Enabled
 
-        If strCurrentPlayer = "Player 1" Then
-            lblPlayerTurn.Text = "Player 2's Turn"
+        lblPlayerTurn.Text = $"{strCurrentPlayer}'s Turn"
 
-            If player2Playing Then
-                lblState.Text = "Get to 100 to win!"
-            Else
-                lblState.Text = "Roll a 6 to start playing!"
-            End If
+        If playerStats(strCurrentPlayer)("Playing") Then
+            lblState.Text = "Get to 100 to win!"
         Else
-            lblPlayerTurn.Text = "Player 1's Turn"
-
-            If player1Playing Then
-                lblState.Text = "Get to 100 to win!"
-            Else
-                lblState.Text = "Roll a 6 to start playing!"
-            End If
+            lblState.Text = "Roll a 6 to start playing!"
         End If
     End Sub
 
-    Private Function checkTile(playerScore As Integer) As String
-        Select Case playerScore
+    Private Function checkTile(score As Integer) As String
+        Select Case score
             ' This checks if a tile is the bottom of a ladder
             Case 2
-                playerScore = 38
+                playerStats(strCurrentPlayer)("Score") = 38
                 Return "Ladder"
             Case 9
-                playerScore = 14
+                playerStats(strCurrentPlayer)("Score") = 14
                 Return "Ladder"
             Case 15
-                playerScore = 82
+                playerStats(strCurrentPlayer)("Score") = 82
                 Return "Ladder"
             Case 16
-                player1Score = 54
+                playerStats(strCurrentPlayer)("Score") = 54
                 Return "Ladder"
             Case 50
-                playerScore = 91
+                playerStats(strCurrentPlayer)("Score") = 91
                 Return "Ladder"
             Case 74
-                playerScore = 87
+                playerStats(strCurrentPlayer)("Score") = 87
                 Return "Ladder"
            ' This checks if a tile is the head of a snake
             Case 18
-                playerScore = 6
+                playerStats(strCurrentPlayer)("Score") = 6
                 Return "Snake"
             Case 29
-                playerScore = 7
+                playerStats(strCurrentPlayer)("Score") = 7
                 Return "Snake"
             Case 61
-                playerScore = 16
+                playerStats(strCurrentPlayer)("Score") = 16
                 Return "Snake"
             Case 72
-                playerScore = 47
+                playerStats(strCurrentPlayer)("Score") = 47
                 Return "Snake"
             Case 96
-                playerScore = 76
+                playerStats(strCurrentPlayer)("Score") = 76
                 Return "Snake"
+            Case Else
+                Return "Playing"
         End Select
     End Function
 
     Private Function calculateScore(intRollNumber As Integer) As String
-        ' This is calculation of score for both players!
-        If strCurrentPlayer = "Player 1" Then
-            ' This is calculation of score for player 1
-            If (player1Score + intRollNumber < 100) Then
-                player1Score += intRollNumber
-            ElseIf (player1Score + intRollNumber) = 100 Then
-                player1Score += intRollNumber
-                Return "Win"
-            Else
-                Return "Continue"
-            End If
+        Dim intPlayerScore As Integer = playerStats(strCurrentPlayer)("Score")
 
-            Return checkTile(player1Score)
-        ElseIf strCurrentPlayer = "Player 2" Then
-            ' This is calculation of score for player 2
-            If (player2Score + intRollNumber < 100) Then
-                player2Score += intRollNumber
-            ElseIf (player2Score + intRollNumber) = 100 Then
-                player2Score += intRollNumber
-                Return "Win"
-            Else
-                Return "Continue"
-            End If
-
-            Return checkTile(player1Score)
+        If (intPlayerScore + intRollNumber) < 100 Then
+            playerStats(strCurrentPlayer)("Score") += intRollNumber
+        ElseIf (intPlayerScore + intRollNumber) = 100 Then
+            playerStats(strCurrentPlayer)("Score") += intRollNumber
+            Return "Win"
+        Else
+            Return "Continue"
         End If
 
-        Return "Playing"
+        Return checkTile(intPlayerScore)
     End Function
 
-    Private Sub movePlayer(picPlayer As PictureBox, counter As Integer)
+    Private Sub movePlayer(counter As Integer)
         Dim lblName As String = "lblCounter" + counter.ToString
         Dim lblCounter As Label = CType(Me.Controls(lblName), Label)
+        Dim picPlayer As PictureBox
+
+        If strCurrentPlayer = "Player 1" Then
+            picPlayer = picPlayer1
+        Else
+            picPlayer = picPlayer2
+        End If
 
         picPlayer.Left = lblCounter.Left
         picPlayer.Top = lblCounter.Top
     End Sub
 
     Private Sub addHistory(outcome As String)
-        Dim score As Integer
-
-        If strCurrentPlayer = "Player 1" Then
-            score = player1Score
-        Else
-            score = player2Score
-        End If
+        Dim intPlayerScore As Integer = playerStats(strCurrentPlayer)("Score")
 
         Select Case outcome
             Case "Start Playing"
                 lblHistory.Text += $"{newline}{strCurrentPlayer} has rolled a 6! They have now started playing"
             Case "Playing"
-                lblHistory.Text += $"{newline}{strCurrentPlayer} has moved to {score}"
+                lblHistory.Text += $"{newline}{strCurrentPlayer} has moved to {intPlayerScore}"
             Case "Snake"
             Case "Ladder"
-                lblHistory.Text += $"{newline}{strCurrentPlayer} has landed on a {outcome.ToLower}! They move to {score}"
+                lblHistory.Text += $"{newline}{strCurrentPlayer} has landed on a {outcome.ToLower}! They move to {intPlayerScore}"
             Case "Continue"
                 lblHistory.Text += $"{newline}{strCurrentPlayer} has rolled over 100! Roll to 100 exactly to win!"
         End Select
     End Sub
 
     Private Sub restart()
-        player1Playing = False
-        player2Playing = False
-        player1Score = 1
-        player2Score = 1
+        playerStats("Player 1")("Playing") = False
+        playerStats("Player 2")("Playing") = False
+        playerStats("Player 1")("Score") = 1
+        playerStats("Player 2")("Score") = 1
         lblHistory.Text = ""
 
-        movePlayer(picPlayer1, 1)
-        movePlayer(picPlayer2, 1)
-        setDiePic(1, picDie1)
-        setDiePic(1, picDie2)
+        movePlayer(1)
+        movePlayer(1)
+        setDiePic(1)
+        setDiePic(1)
     End Sub
 
     'Main game logic here
     Private Sub takeTurn()
         intRollNumber = rollDie()
         updateForm()
+        setDiePic(intRollNumber)
 
-        If strCurrentPlayer = "Player 1" Then
-            setDiePic(intRollNumber, picDie1)
+        Dim intPlayerScore As Integer = playerStats(strCurrentPlayer)("Score")
+        Dim boolPlaying As Boolean = playerStats(strCurrentPlayer)("Playing")
 
-            If Not player1Playing Then
-                If intRollNumber = 6 Then
-                    player1Playing = True
-                    addHistory("Start Playing")
-                    Return
-                Else
-                    Return
-                End If
+        If Not boolPlaying Then
+            If intRollNumber = 6 Then
+                playerStats(strCurrentPlayer)("Playing") = True
+                addHistory("Start Playing")
+                Return
+            Else
+                Return
             End If
+        End If
 
-            outcome = calculateScore(intRollNumber)
-            addHistory(outcome)
-            movePlayer(picPlayer1, player1Score)
+        outcome = calculateScore(intRollNumber)
+        movePlayer(intPlayerScore)
+        addHistory(outcome)
 
-            If outcome = "Win" Then
-                MessageBox.Show("Player 1 wins!")
-                restart()
-            End If
-        ElseIf strCurrentPlayer = "Player 2" Then
-            setDiePic(intRollNumber, picDie2)
-
-            If Not player2Playing Then
-                If intRollNumber = 6 Then
-                    player2Playing = True
-                    addHistory("Start Playing")
-                    Return
-                Else
-                    Return
-                End If
-            End If
-
-            outcome = calculateScore(intRollNumber)
-            addHistory(outcome)
-            movePlayer(picPlayer2, player2Score)
-
-            If outcome = "Win" Then
-                MessageBox.Show("player 2 win!")
-                restart()
-            End If
+        If outcome = "Win" Then
+            MessageBox.Show("You've Won!", "Game over!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            restart()
         End If
     End Sub
 
     'Choose correct image for the die
-    Private Sub setDiePic(intNumber As Integer, picBox As PictureBox)
+    Private Sub setDiePic(intNumber As Integer)
+        Dim picBox As PictureBox
+
+        If strCurrentPlayer = "Player 1" Then
+            picBox = picDie1
+        Else
+            picBox = picDie2
+        End If
+
         picBox.Image = dieFaces(intNumber - 1)
     End Sub
 
