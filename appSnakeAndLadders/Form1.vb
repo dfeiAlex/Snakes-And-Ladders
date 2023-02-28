@@ -44,7 +44,7 @@
     Private Sub takeTurn()
         intRollNumber = rollDie()
         updateForm()
-        setDiePic(intRollNumber)
+        setDiePic(intRollNumber, strCurrentPlayer)
 
         Dim boolPlaying As Boolean = playerStats(strCurrentPlayer)("Playing")
 
@@ -92,10 +92,10 @@
     End Sub
 
     'Choose correct image for the die
-    Private Sub setDiePic(intNumber As Integer)
+    Private Sub setDiePic(intNumber As Integer, player As String)
         Dim picBox As PictureBox
 
-        If strCurrentPlayer = "Player 1" Then
+        If player = "Player 1" Then
             picBox = picDie1
         Else
             picBox = picDie2
@@ -113,11 +113,12 @@
         btnDie1.Enabled = True
         btnDie2.Enabled = False
         lblHistory.Text = ""
+        lblPlayerTurn.Text = "Player 1's Turn"
 
         movePlayer(1, "Player 1")
         movePlayer(1, "Player 2")
-        setDiePic(1)
-        setDiePic(1)
+        setDiePic(1, "Player 1")
+        setDiePic(1, "Player 2")
     End Sub
 
     'Outputs the turn outcome to lblHistory
@@ -126,16 +127,21 @@
 
         lblHistory.Text += newline
 
+        Console.WriteLine(outcome)
+
         Select Case outcome
             Case "Start Playing"
                 lblHistory.Text += $"{strCurrentPlayer} has rolled a 6! They have now started playing"
-            Case "Playing"
-                lblHistory.Text += $"{strCurrentPlayer} has moved to {intPlayerScore}"
-            Case "Snake"
             Case "Ladder"
                 lblHistory.Text += $"{strCurrentPlayer} has landed on a {outcome.ToLower}! They move to {intPlayerScore}"
+            Case "Snake"
+                lblHistory.Text += $"{strCurrentPlayer} has landed on a {outcome.ToLower}! They move to {intPlayerScore}"
+            Case "Playing"
+                lblHistory.Text += $"{strCurrentPlayer} has moved to {intPlayerScore}"
             Case "Continue"
                 lblHistory.Text += $"{strCurrentPlayer} has rolled over 100! Roll to 100 exactly to win!"
+            Case "Win"
+                lblHistory.Text += $"{strCurrentPlayer} has landed on 100, they win!"
         End Select
     End Sub
 
